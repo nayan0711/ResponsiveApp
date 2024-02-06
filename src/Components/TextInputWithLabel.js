@@ -3,9 +3,9 @@ import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'reac
 import { StyleSheet, Text, View, TextInput, Image, Touchable, TouchableOpacity } from 'react-native';
 import imagePath from '../constants/imagePath';
 import colors from '../styles/colors';
-export default function TextInputWithLabel({ label, placeholder, secureTextEntry, rightIcon,onPress,...props }) {
+export default function TextInputWithLabel({ label, placeholder, secureTextEntry, rightIcon,onPress,inputStyle,...props }) {
   return (
-    <View style={styles.inputStyle}>
+    <View style={styles.inputStyle} {...inputStyle}>
       <Text>{label}</Text>
       <View style={styles.inputViewStyle}>
         <TextInput
@@ -14,6 +14,7 @@ export default function TextInputWithLabel({ label, placeholder, secureTextEntry
           keyboardType={props.keyboardType || 'default'}
           {...props}
           secureTextEntry={secureTextEntry}
+          
         />
         {!!rightIcon? <TouchableOpacity onPress={onPress}>
         <Image source={rightIcon} />
