@@ -3,10 +3,13 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import Authstack from './AuthStack'
 import HomeStack from './HomeStack'
+import { ForgetPassword, SetPassword } from '../Screens'
+
 const Routes = () => {
   return (
     <NavigationContainer>
         {true? HomeStack(): Authstack()}
+        {/* <ForgetPassword/> */}
     </NavigationContainer>
   )
 }

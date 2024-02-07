@@ -5,9 +5,11 @@ import ButtonComponent from '../../Components/ButtonComponent'
 import { moderateScale, scale, moderateVerticalScale } from 'react-native-size-matters'
 import TextInputWithLabel from '../../Components/TextInputWithLabel'
 import imagePath from '../../constants/imagePath'
+import { useNavigation } from '@react-navigation/native'
 
 export default function Register() {
   const [ischecked,setchecked]=useState(true)
+  const navigation=useNavigation();
   return (
     <View style={styles.container}>
       <HeaderComponent />
@@ -40,6 +42,7 @@ export default function Register() {
           <TextInputWithLabel
             label="Email"
             placeholder="Enter your Email"
+            keyboardType='email-address'
           />
         </View>
         <View style={styles.mainStyle}>
@@ -59,17 +62,19 @@ export default function Register() {
           <TextInputWithLabel
             label="Address"
             placeholder="Enter your Address"
+            keyboardType='email-address'
           />
           <TextInputWithLabel
             label="Referral Code"
             placeholder="APPLY COUPON"
+            keyboardType='email-address'
           />
         </View>
         <TouchableOpacity style={[styles.mainStyle,{marginHorizontal:moderateScale(16), marginVertical:moderateScale(2)}]} onPress={()=>setchecked(!ischecked)}>
           <Image source={!ischecked?imagePath.unchecked:imagePath.checked }/>
           <Text>By Logging in, you agree to NOOVVOO's Privacy Policy & Terms of Use</Text>
         </TouchableOpacity>
-        <ButtonComponent btnText={'Register'} btnStyle={styles.btnStyle} />
+        <ButtonComponent btnText={'Register'} btnStyle={styles.btnStyle} onPress={()=>{navigation.navigate('SetPassword')}}/>
         </ScrollView >
     </View>
     

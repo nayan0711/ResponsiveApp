@@ -7,6 +7,7 @@ import imagePath from '../../constants/imagePath';
 import colors from '../../styles/colors';
 import ButtonComponent from '../../Components/ButtonComponent';
 import Routes from '../../Navigation/Routes';
+import { ForgetPassword } from '..';
 
 export default function Login() {
   const navigation = useNavigation();
@@ -45,7 +46,7 @@ export default function Login() {
             onPress={() => setVisible(!isVisible)}
           />
 
-          <TouchableOpacity style={styles.forgetView}>
+          <TouchableOpacity style={styles.forgetView} onPress={()=>navigation.navigate('ForgetPassword')}>
             <Text style={styles.forgetText}>Forget Password?</Text>
           </TouchableOpacity>
 

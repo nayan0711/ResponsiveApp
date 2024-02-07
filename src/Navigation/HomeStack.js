@@ -10,6 +10,7 @@ import {
     Home
 } from '../Screens/index.js'
 import TabRoutes from './TabRoutes.js';
+import { ImageComponent } from 'react-native';
 
 const Stack=createNativeStackNavigator();
 export default function HomeStack(){
