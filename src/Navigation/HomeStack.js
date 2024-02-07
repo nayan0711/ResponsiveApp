@@ -17,8 +17,7 @@ export default function HomeStack(){
     return(
                 
         <Stack.Navigator screenOptions={{headerShown:false}}>
-             
-            <Stack.Screen name="tabRoutes" component={TabRoutes}/>
+        <Stack.Screen name="tabRoutes" component={TabRoutes}/>
         </Stack.Navigator>
 
     )

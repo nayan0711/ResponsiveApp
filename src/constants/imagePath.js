@@ -10,6 +10,7 @@ const imagePath = {
     Home:require('../assets/Home.png'),
     BookingIcon:require('../assets/BookingIcon.png'),
     ProfileIcon:require('../assets/ProfileIcon.png'),
+    Notification:require('../assets/Notification.png'),
   };
   
   export default imagePath;

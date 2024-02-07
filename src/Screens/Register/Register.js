@@ -74,7 +74,7 @@ export default function Register() {
           <Image source={!ischecked?imagePath.unchecked:imagePath.checked }/>
           <Text>By Logging in, you agree to NOOVVOO's Privacy Policy & Terms of Use</Text>
         </TouchableOpacity>
-        <ButtonComponent btnText={'Register'} btnStyle={styles.btnStyle} onPress={()=>{navigation.navigate('SetPassword')}}/>
+        <ButtonComponent btnText={'Register'} btnStyle={styles.btnStyle} />
         </ScrollView >
     </View>
     

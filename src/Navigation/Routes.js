@@ -8,7 +8,7 @@ import { ForgetPassword, SetPassword } from '../Screens'
 const Routes = () => {
   return (
     <NavigationContainer>
-        {true? HomeStack(): Authstack()}
+        {false? HomeStack(): Authstack()}
         {/* <ForgetPassword/> */}
     </NavigationContainer>
   )
