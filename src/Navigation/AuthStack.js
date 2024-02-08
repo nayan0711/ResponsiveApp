@@ -9,6 +9,7 @@ import {
     SetPassword,
     Home
 } from '../Screens/index.js'
+import HomeStack from './HomeStack.js';
 
 const Stack=createNativeStackNavigator();
 export default function Authstack(){
@@ -20,6 +21,7 @@ export default function Authstack(){
             <Stack.Screen name="ChooseAccount" component={ChooseAccount}/>
             <Stack.Screen name="ForgetPassword" component={ForgetPassword}/>
             <Stack.Screen name="SetPassword" component={SetPassword}/>
+            <Stack.Screen name="Home" component={HomeStack}/>
         </Stack.Navigator>
 
     )

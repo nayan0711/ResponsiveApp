@@ -15,7 +15,13 @@ export default function Register() {
   const [fName,setfName]=useState('')
   const [lName,setlName]=useState('')
   const [sName,setsName]=useState('')
-  
+
+  //const [date,setDate]=useState(new Date())
+  const [email,setEmail]=useState('')
+  const isValidEmail=(email)=>{
+    const expression=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+    return expression.test(email)
+  }
   const handelRegister=()=>{
     if(fName.trim()==''){
       Alert.alert('Error', 'Enter First Name')
@@ -26,8 +32,17 @@ export default function Register() {
     else if(sName.trim()==''){
       Alert.alert('Error','Enter Salon Name')
     }
-    
+    else if(email.trim()===''){
+      Alert.alert('Error','Please enter your Email Address')
+    } else if(!isValidEmail(email)){
+      Alert.alert('Error','Please enter valid Email Address')
+    }else{
+      navigation.navigate('Home')
 
+    }
+    
+    //console.log(date)
+    
   }
   return (
     <View style={styles.container}>
@@ -61,17 +76,13 @@ export default function Register() {
         label="Date of Birth"
         placeholder="Select your date of birth"
         onChangeText={(date) => console.log("Selected date:", date.toLocaleDateString())}
-    
+
         />
-         {/* <TextInputWithLabel
-            label="Date of Birth"
-            placeholder="Ex: 07/11/2002"
-            
-          />            */}
           <TextInputWithLabel
             label="Email"
             placeholder="Enter your Email"
             keyboardType='email-address'
+            onChangeText={(text)=>setEmail(text)}
           />
         </View>
         <View style={styles.mainStyle}>
@@ -79,31 +90,34 @@ export default function Register() {
             label="Country"
             placeholder="Ex: India"
             inputStyle={{ flex: 1 }}
+            onChangeText={()=>{}}
           />
           <View style={{ marginHorizontal: moderateScale(8) }}></View>
           <TextInputWithLabel
             label="Postal/Zip Code"
             placeholder="Ex: 75001"
             inputStyle={{ flex: 1 }}
+            onChangeText={()=>{}}
           />
         </View>
         <View style={styles.FlexStyle}>
           <TextInputWithLabel
             label="Address"
             placeholder="Enter your Address"
-            keyboardType='email-address'
+            onChangeText={()=>{}}
           />
           <TextInputWithLabel
-            label="Referral Code"
+            label="Referral Code (Optional)"
             placeholder="APPLY COUPON"
             keyboardType='email-address'
+            onChangeText={()=>{}}
           />
         </View>
         <TouchableOpacity style={[styles.mainStyle,{marginHorizontal:moderateScale(16), marginVertical:moderateScale(2)}]} onPress={()=>setchecked(!ischecked)}>
           <Image source={!ischecked?imagePath.unchecked:imagePath.checked }/>
           <Text>By Logging in, you agree to NOOVVOO's Privacy Policy & Terms of Use</Text>
         </TouchableOpacity>
-        <ButtonComponent btnText={'Register'} btnStyle={styles.btnStyle} onPress={handelRegister}/>
+        <ButtonComponent btnText={'Register'} btnStyle={styles.btnStyle} onPress={handelRegister  }/>
         </ScrollView >
     </View>
     
