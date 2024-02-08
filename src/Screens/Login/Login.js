@@ -13,6 +13,31 @@ export default function Login() {
   const navigation = useNavigation();
   const [isVisible, setVisible] = useState(false);
 
+  //to check if email address is empty or not
+  const [email,setEmail]=useState('')
+  const [pass,setPass]=useState('')
+  const isValidEmail=(email)=>{
+    const expression=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+    return expression.test(email)
+  }
+  const handleLogin=()=>{
+    if(email.trim()==='' && pass.trim()===''){
+      Alert.alert('Error!','Please enter your Email & Password')
+      }
+    else if(email.trim()===''){
+      Alert.alert('Error','Please enter your Email Address')
+    } else if(email!=isValidEmail){
+      Alert.alert('Error','Please enter valid Email Address')
+    }
+    else if(pass.trim()===''){
+      Alert.alert('Error','Please enter your Password')
+    }else{
+    Alert.alert('Thankyou!','You are Logged in Successfully')
+    }
+  
+    console.log(email)
+    console.log(pass)
+  }
   return (
     <View style={styles.container}>
       <ScrollView style={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}
@@ -35,6 +60,8 @@ export default function Login() {
           <TextInputWithLabel
             label="Email Address"
             placeholder="Enter your email"
+            onChangeText={(text)=>setEmail(text)}
+            keyboardType="email-address"
           />
 
           <TextInputWithLabel
@@ -42,15 +69,16 @@ export default function Login() {
             placeholder="Enter your password"
             secureTextEntry={!isVisible}
             rightIcon={isVisible ? imagePath.showEye : imagePath.hideEye}
-
+            onChangeText={(text)=>setPass(text)}
             onPress={() => setVisible(!isVisible)}
+            
           />
 
           <TouchableOpacity style={styles.forgetView} onPress={()=>navigation.navigate('ForgetPassword')}>
             <Text style={styles.forgetText}>Forget Password?</Text>
           </TouchableOpacity>
 
-          <ButtonComponent btnText='Login' />
+          <ButtonComponent btnText='Login' onPress={handleLogin}/>
 
           <View style={styles.joinView}>
             <Text>Not a Member?</Text>

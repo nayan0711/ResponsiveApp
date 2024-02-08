@@ -6,8 +6,21 @@ import { useState } from 'react'
 import imagePath from '../../constants/imagePath';
 import { moderateScale, moderateVerticalScale, s, scale } from 'react-native-size-matters'
 import ButtonComponent from '../../Components/ButtonComponent'
+import { Alert } from 'react-native'
 export default function ForgetPassword() {
-
+  const [email,setEmail]=useState('')
+  const isValidEmail=(email)=>{
+    const expression=/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+    return expression.test(email)
+  }
+  const handelForgetPassword=()=>{
+    if(email.trim()==''){
+      Alert.alert('Error','Please enter Your Email ID')
+    }else if(email!=isValidEmail(email)){
+      Alert.alert('Error','Please enter a valid Email')
+    }
+    
+  }
   return (
     <View>
       <HeaderComponent/>
@@ -20,10 +33,10 @@ export default function ForgetPassword() {
       <TextInputWithLabel 
       label="Email" 
       placeholder="Enter email to recieve OTP" 
-      
+      onChangeText={(text)=>setEmail(text)}
       keyboardType='email-address'
       />
-      <ButtonComponent btnText='Continue' btnStyle={{marginVertical:moderateVerticalScale(44)}}/>
+      <ButtonComponent btnText='Continue' onPress={handelForgetPassword} btnStyle={{marginVertical:moderateVerticalScale(44)}}/>
       </View>
       </ScrollView>
     </View>

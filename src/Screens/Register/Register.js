@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/native'
 export default function Register() {
   const [ischecked,setchecked]=useState(true)
   const navigation=useNavigation();
+  
   return (
     <View style={styles.container}>
       <HeaderComponent />

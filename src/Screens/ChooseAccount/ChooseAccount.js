@@ -20,7 +20,7 @@ export default function ChooseAccount() {
           <Image source={imagePath.FreelancerIcon} style={styles.imageStyle}/>
           <Text style={styles.optionTextStyle}>Freelancer</Text>
           <ButtonComponent btnText='Continue' btnStyle={styles.btnStyle} onPress={()=>navigation.navigate('Register')}/>
-
+          
         </View>
       </View>
     </SafeAreaView>
