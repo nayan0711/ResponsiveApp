@@ -6,11 +6,29 @@ import { moderateScale, scale, moderateVerticalScale } from 'react-native-size-m
 import TextInputWithLabel from '../../Components/TextInputWithLabel'
 import imagePath from '../../constants/imagePath'
 import { useNavigation } from '@react-navigation/native'
-
+import { Alert } from 'react-native'
+import RNDateTimePicker, { DateTimePickerAndroid } from '@react-native-community/datetimepicker'
+import InputForDate from '../../Components/InputForDate'
 export default function Register() {
   const [ischecked,setchecked]=useState(true)
   const navigation=useNavigation();
+  const [fName,setfName]=useState('')
+  const [lName,setlName]=useState('')
+  const [sName,setsName]=useState('')
   
+  const handelRegister=()=>{
+    if(fName.trim()==''){
+      Alert.alert('Error', 'Enter First Name')
+    }
+    else if(lName.trim()==''){
+      Alert.alert('Error', 'Enter Last Name')
+    }
+    else if(sName.trim()==''){
+      Alert.alert('Error','Enter Salon Name')
+    }
+    
+
+  }
   return (
     <View style={styles.container}>
       <HeaderComponent />
@@ -22,12 +40,14 @@ export default function Register() {
             label="First Name"
             placeholder="Enter First Name"
             inputStyle={{ flex: 1 }}
+            onChangeText={(text)=>setfName(text)}
           />
           <View style={{ marginHorizontal: moderateScale(8) }}></View>
           <TextInputWithLabel
             label="Last Name"
             placeholder="Enter Last Name"
             inputStyle={{ flex: 1 }}
+            onChangeText={(text)=>setlName(text)}
           />
         </View>
         <View style={styles.FlexStyle}>
@@ -35,11 +55,19 @@ export default function Register() {
             label="Salon name"
             placeholder="Enter Last Name"
             inputStyle={{}}
+            onChangeText={(text)=>setsName(text)}
           />
-          <TextInputWithLabel
+        <InputForDate
+        label="Date of Birth"
+        placeholder="Select your date of birth"
+        onChangeText={(date) => console.log("Selected date:", date.toLocaleDateString())}
+    
+        />
+         {/* <TextInputWithLabel
             label="Date of Birth"
             placeholder="Ex: 07/11/2002"
-          />
+            
+          />            */}
           <TextInputWithLabel
             label="Email"
             placeholder="Enter your Email"
@@ -75,7 +103,7 @@ export default function Register() {
           <Image source={!ischecked?imagePath.unchecked:imagePath.checked }/>
           <Text>By Logging in, you agree to NOOVVOO's Privacy Policy & Terms of Use</Text>
         </TouchableOpacity>
-        <ButtonComponent btnText={'Register'} btnStyle={styles.btnStyle} />
+        <ButtonComponent btnText={'Register'} btnStyle={styles.btnStyle} onPress={handelRegister}/>
         </ScrollView >
     </View>
     

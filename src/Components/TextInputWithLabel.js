@@ -3,6 +3,9 @@ import { scale, verticalScale, moderateScale, moderateVerticalScale } from 'reac
 import { StyleSheet, Text, View, TextInput, Image, Touchable, TouchableOpacity } from 'react-native';
 import imagePath from '../constants/imagePath';
 import colors from '../styles/colors';
+import RNDateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePicker from 'react-native-modal-datetime-picker';
+
 export default function TextInputWithLabel({ 
   label,
   placeholder, 
@@ -11,6 +14,7 @@ export default function TextInputWithLabel({
   onPress,
   inputStyle,
   onChangeText=()=>{},
+  isdate,
   ...props }) {
   
   
@@ -18,14 +22,19 @@ export default function TextInputWithLabel({
     <View style={styles.inputStyle} {...inputStyle}>
       <Text>{label}</Text>
       <View style={styles.inputViewStyle}>
-        <TextInput
-          placeholder={placeholder}
-          style={styles.inlinestyle}
-          keyboardType={props.keyboardType || 'default'}
-          {...props}
-          secureTextEntry={secureTextEntry}
-          onChangeText={onChangeText}
-        />
+       {isdate? 
+       <RNDateTimePicker mode="date" value={new Date()} placeholderText='Ex: 07/11/2002'/>
+       :
+       <TextInput
+       placeholder={placeholder}
+       style={styles.inlinestyle}
+       keyboardType={props.keyboardType || 'default'}
+       {...props}
+       secureTextEntry={secureTextEntry}
+       onChangeText={onChangeText}
+     />
+
+       } 
 
         {!!rightIcon? <TouchableOpacity onPress={onPress}>
         <Image source={rightIcon} />
