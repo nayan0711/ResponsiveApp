@@ -16,8 +16,10 @@ export default function ForgetPassword() {
   const handelForgetPassword=()=>{
     if(email.trim()==''){
       Alert.alert('Error','Please enter Your Email ID')
-    }else if(email!=isValidEmail(email)){
+    }else if(!isValidEmail(email)){
       Alert.alert('Error','Please enter a valid Email')
+    }else{
+      Alert.alert('Thankyou','OTP will be sent to your Email')
     }
     
   }

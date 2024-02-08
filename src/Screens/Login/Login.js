@@ -26,14 +26,16 @@ export default function Login() {
       }
     else if(email.trim()===''){
       Alert.alert('Error','Please enter your Email Address')
-    } else if(email!=isValidEmail){
+    } else if(!isValidEmail){
       Alert.alert('Error','Please enter valid Email Address')
     }
     else if(pass.trim()===''){
       Alert.alert('Error','Please enter your Password')
     }else{
     Alert.alert('Thankyou!','You are Logged in Successfully')
+    navigation.navigate('Home')
     }
+    
   
     console.log(email)
     console.log(pass)
