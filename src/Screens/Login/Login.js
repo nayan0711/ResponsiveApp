@@ -24,10 +24,9 @@ export default function Login() {
     if(email.trim()==='' && pass.trim()===''){
       Alert.alert('Error!','Please enter your Email & Password')
       }
-    else if(email.trim()===''){
-      Alert.alert('Error','Please enter your Email Address')
-    } else if(!isValidEmail){
+    else if(email.trim()=='' || (!isValidEmail(email))){
       Alert.alert('Error','Please enter valid Email Address')
+      
     }
     else if(pass.trim()===''){
       Alert.alert('Error','Please enter your Password')
@@ -36,7 +35,7 @@ export default function Login() {
     navigation.navigate('Home')
     }
     
-  
+    console.log(!isValidEmail(email))
     console.log(email)
     console.log(pass)
   }
